@@ -26,5 +26,5 @@ conda activate FashionDPO
 
 ## Datasets
 
-We follow the previous works DiFashion and use the datasets of iFashion~\cite{POG} and Polyvore-U~\cite{polyvore_u}, which include the required data of both fashion outfit and user-fashion item interactions.
+We follow the previous work [DiFashion](https://github.com/YiyanXu/DiFashion?tab=readme-ov-file) and use the datasets of iFashion and Polyvore-U, which include the required data of both fashion outfit and user-fashion item interactions. 
 
