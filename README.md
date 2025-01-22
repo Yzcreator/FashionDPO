@@ -42,6 +42,7 @@ If it is the first round of sampling in the iterative process, set `args.resume=
 ### Get Feedback
 We locally deploy MiniCPM to evaluate "Quality". For "Compatibility", we train a VBPR model using paired outfit data from the POG and Polyvore-U dataset. "Personalization" is evaluated using the CLIP Score.
 ```
-cd ./fashiondpo
-python sample.py
+cd ./evaluation
+python multiple_evaluate.py
 ```
+Quality: 
