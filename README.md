@@ -38,3 +38,10 @@ python sample.py
 If it is the first round of sampling in the iterative process, set `args.resume=False`, which will create the LoRA layers in the pre-trained model. In subsequent rounds, set `args.resume=True` to load the fine-tuned LoRA layers from the model specified in args.pretrained_model_name_or_path.
 
 ## Feedback Generation from Multiple Experts
+
+### Get Feedback
+We locally deploy MiniCPM to evaluate "Quality". For "Compatibility", we train a VBPR model using paired outfit data from the POG and Polyvore-U dataset. "Personalization" is evaluated using the CLIP Score.
+```
+cd ./fashiondpo
+python sample.py
+```
