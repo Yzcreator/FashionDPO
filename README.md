@@ -28,3 +28,11 @@ conda activate FashionDPO
 
 We follow the previous work [DiFashion](https://github.com/YiyanXu/DiFashion?tab=readme-ov-file) and use the datasets of iFashion and Polyvore-U, which include the required data of both fashion outfit and user-fashion item interactions. 
 
+## Fashion Image Generation without Feedback
+
+During the sampling phase, this code generates 7 recommended items for each outfit as a candidate set. 
+```
+cd ./fashiondpo
+python sample.py
+```
+If it is the first round of sampling in the iterative process, set 'args.resume=False', which will create the LoRA layers in the pre-trained model. In subsequent rounds, set 'args.resume=True' to load the fine-tuned LoRA layers from the model specified in args.pretrained_model_name_or_path.
