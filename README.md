@@ -2,4 +2,4 @@
 
 This is the implementation of FashionDPO.
 
-![Results for this project](figures/model_result.png)
+![Results for this project](figure/model_result.png)
