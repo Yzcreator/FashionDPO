@@ -35,4 +35,6 @@ During the sampling phase, this code generates 7 recommended items for each outf
 cd ./fashiondpo
 python sample.py
 ```
-If it is the first round of sampling in the iterative process, set 'args.resume=False', which will create the LoRA layers in the pre-trained model. In subsequent rounds, set 'args.resume=True' to load the fine-tuned LoRA layers from the model specified in args.pretrained_model_name_or_path.
+If it is the first round of sampling in the iterative process, set `args.resume=False`, which will create the LoRA layers in the pre-trained model. In subsequent rounds, set `args.resume=True` to load the fine-tuned LoRA layers from the model specified in args.pretrained_model_name_or_path.
+
+## Feedback Generation from Multiple Experts
