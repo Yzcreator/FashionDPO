@@ -52,9 +52,14 @@ The prompt:
 ```
 Consider whether the fashion elements in the image are complete and whether they conform to fashion design principles. The goal is to classify the quality into one of the following categories: 1-Very Poor Quality, 2-Poor Quality, 3-Low Quality, 4-Below Average Quality, 5-Moderate Quality, 6-Above Average Quality, 7-Good Quality, 8-Very Good Quality, 9-High Quality, 10-Exceptional Quality. Please provide the best possible category based on the available information. 
 ```
-2) Compatibility: We trained the VBPR model using the iFashion dataset. The checkpoint is avaliable at [vbpr_compatibility](https://huggingface.co/AZhe1220/fashiondpo/tree/main).
+Set `aegs.evanumber=5 or 10` to specify the number of classification levels to be used in the MiniCPM evaluation.
 
-3) Personalization: We use the pre-trained [CLIP (ViT-B/32)](https://huggingface.co/sentence-transformers/clip-ViT-B-32) to encode the generated fashion items and user interaction history image items, and calculate the CLIP Score between them.
+
+2) Compatibility: We trained the VBPR model using the iFashion dataset. The checkpoint is avaliable at [vbpr_compatibility](https://huggingface.co/AZhe1220/fashiondpo/tree/main).
+If you want to retrain the model, please refer to `train_VBPR.py.`
+
+4) Personalization: We use the pre-trained [CLIP (ViT-B/32)](https://huggingface.co/sentence-transformers/clip-ViT-B-32) to encode the generated fashion items and user interaction history image items, and calculate the CLIP Score between them.
+
 
 Normalize the scores and make preference judgments to construct positive-negative pairs:
 ```
@@ -62,7 +67,13 @@ cd ./evaluation
 python analyse.py
 ```
 
+### Model Fine-tuning with Direct Preference Optimization
 
+In each outfit, if any two items from the 7 candidate generated items form a preference-non-preference relationship, we perform LoRA fine-tuning on the 50 saved timesteps:
+```
+cd ./fashiondpo
+python finetune.py
+```
 
 
 
