@@ -45,7 +45,7 @@ We locally deploy MiniCPM to evaluate "Quality". For "Compatibility", we train a
 cd ./evaluation
 python multiple_evaluate.py
 ```
-It contains three evaluating perspectives:
+This contains three evaluating perspectives:
 
 1) Quality: Loading the per-trained [MiniCPM-Llama3-V 2.5](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5).
 The prompt:
@@ -55,6 +55,15 @@ Consider whether the fashion elements in the image are complete and whether they
 2) Compatibility: We trained the VBPR model using the iFashion dataset. The checkpoint is avaliable at [vbpr_compatibility](https://huggingface.co/AZhe1220/fashiondpo/tree/main).
 
 3) Personalization: We use the pre-trained [CLIP (ViT-B/32)](https://huggingface.co/sentence-transformers/clip-ViT-B-32) to encode the generated fashion items and user interaction history image items, and calculate the CLIP Score between them.
+
+Normalize the scores and make preference judgments to construct positive-negative pairs:
+```
+cd ./evaluation
+python analyse.py
+```
+
+
+
 
 
 
