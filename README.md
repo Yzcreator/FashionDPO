@@ -45,4 +45,5 @@ We locally deploy MiniCPM to evaluate "Quality". For "Compatibility", we train a
 cd ./evaluation
 python multiple_evaluate.py
 ```
-Quality: 
+Quality: We have deployed MiniCPM locally to evaluate the generated results, and the prompt used is: 
+`Consider whether the fashion elements in the image are complete and whether they conform to fashion design principles. The goal is to classify the quality into one of the following categories: 1-Very Poor Quality, 2-Poor Quality, 3-Low Quality, 4-Below Average Quality, 5-Moderate Quality, 6-Above Average Quality, 7-Good Quality, 8-Very Good Quality, 9-High Quality, 10-Exceptional Quality. Please provide the best possible category based on the available information. `
