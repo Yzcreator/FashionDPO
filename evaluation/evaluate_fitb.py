@@ -39,7 +39,7 @@ parser.add_argument('--dims4fid', type=int, default=2048,
 parser.add_argument('--data_path', type=str, default='../datasets/ifashion/semantic_category')
 parser.add_argument('--pretrained_evaluator_ckpt', type=str, default='./compatibility_evaluator/ifashion-ckpt/fashion_evaluator.pth')
 parser.add_argument('--dataset', type=str, default="ifashion")
-parser.add_argument('--output_dir', type=str, default="../DiFashion/output/sample_ddim_eval_lora_result/ifashion_FITB_7_2000")
+parser.add_argument('--output_dir', type=str, default="../FashionDPO/output/sample_ddim_lora_result/ifashion_FITB_7_1000")
 parser.add_argument('--eval_version', type=str, default="checkpoint-8000")
 # parser.add_argument('--ckpts', type=str, default=None)
 parser.add_argument('--ckpts', type=str, default="all")
@@ -115,11 +115,11 @@ def main():
     if args.dataset == "ifashion":
         args.data_path = '../datasets/ifashion'
         args.pretrained_evaluator_ckpt = './compatibility_evaluator/ifashion-ckpt/ifashion_evaluator.pth'
-        # args.output_dir = '../DiFashion/output/ifashion'
+        # args.output_dir = '../FashionDPO/output/ifashion'
     elif args.dataset == "polyvore":
         args.data_path = '../datasets/polyvore'
         args.pretrained_evaluator_ckpt = './compatibility_evaluator/polyvore-ckpt/polyvore_evaluator.pth'
-        # args.output_dir = '../DiFashion/output/polyvore'
+        # args.output_dir = '../FashionDPO/output/polyvore'
     else:
         raise ValueError(f"Invalid dataset: {args.dataset}.")
 
@@ -181,7 +181,7 @@ def main():
 
         trans = transforms.ToTensor()
         resize = transforms.Resize(512, interpolation=transforms.InterpolationMode.BILINEAR)
-        _, _, img_trans = open_clip.create_model_and_transforms('ViT-H-14', pretrained='../DiFashion/models/huggingface/open_clip/open_clip_pytorch_model.bin')
+        _, _, img_trans = open_clip.create_model_and_transforms('ViT-H-14', pretrained='../FashionDPO/models/huggingface/open_clip/open_clip_pytorch_model.bin')
         gen4eval = []
         gen4clip = []
         gen4lpips = []
@@ -195,7 +195,7 @@ def main():
         for uid in gen_data:
             for oid in gen_data[uid]:
                 for img_path in gen_data[uid][oid]["image_paths"]:
-                    img_path = os.path.join(f"../DiFashion/", img_path)
+                    img_path = os.path.join(f"../FashionDPO/", img_path)
                     im = Image.open(img_path)
                     gen4eval.append(trans(im))
                     gen4clip.append(img_trans(im))
@@ -369,7 +369,7 @@ def main():
                     cate = gen_data[uid][oid]["cates"][i].item()
                     try:
                         gen4personal_sim["hist"].append(history[uid][cate])
-                        img_path = os.path.join(f"../DiFashion/", img_path)
+                        img_path = os.path.join(f"../FashionDPO/", img_path)
                         im = Image.open(img_path)
                         gen4personal_sim["gen"].append(img_trans(im))
                     except:
@@ -412,7 +412,7 @@ def main():
                 outfits.append(new_outfit)
 
                 for img_path in gen_data[uid][oid]["image_paths"]:
-                    img_path = os.path.join(f"../DiFashion/", img_path)
+                    img_path = os.path.join(f"../FashionDPO/", img_path)
                     im = Image.open(img_path)
                     gen_imgs.append(img_trans(im))
 
