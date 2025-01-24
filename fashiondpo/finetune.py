@@ -81,7 +81,7 @@ def parse_all_args():
         "--pretrained_model_untrained_parameters",
         type=str,
         # default="stabilityai/stable-diffusion-2-base",
-        default="checkpoints/checkpoint-15000",
+        default="checkpoints/checkpoint_ifashion",
         required=False,
         help="Path to pretrained model or model identifier from huggingface.co/models.",
     )
