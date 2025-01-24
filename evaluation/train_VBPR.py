@@ -753,38 +753,6 @@ for epoch in range(1, EPOCHS + 1):
         index_best_epoch = epoch
         
 
-
-    # # test
-    # if (epoch >= 7):  # for quick test
-    #     p1, r1, f1, ndcg1, auc1, p2, r2, f2, ndcg2, auc2, p3, r3, f3, ndcg3, auc3 = test(user_list_test_cold,
-    #                                                                                      user_list_test_dense,
-    #                                                                                      user_list_test,
-    #                                                                                      interaction_indicator_test,
-    #                                                                                      interaction_indicator_train,
-    #                                                                                      valid_item_entries_train)
-    #
-    #     # write the performance on test data
-    #     with io.open(result_path + 'All_test_performance.txt', 'a', encoding='utf-8') as file:
-    #         file.write('model: {}:\n'.format(result_path + 'model_rec-{}.pt'.format(epoch)))
-    #         file.write('        all dataset:\n')
-    #         file.write('            P={}\n'.format(p3))
-    #         file.write('            R={}\n'.format(r3))
-    #         file.write('            F={}\n'.format(f3))
-    #         file.write('            NDCG={}\n'.format(ndcg3))
-    #         file.write('            AUC={}\n'.format(auc3))
-    #         file.write('        cold dataset:\n')
-    #         file.write('            P={}\n'.format(p1))
-    #         file.write('            R={}\n'.format(r1))
-    #         file.write('            F={}\n'.format(f1))
-    #         file.write('            NDCG={}\n'.format(ndcg1))
-    #         file.write('            AUC={}\n'.format(auc1))
-    #         file.write('        dense dataset:\n')
-    #         file.write('            P={}\n'.format(p2))
-    #         file.write('            R={}\n'.format(r2))
-    #         file.write('            F={}\n'.format(f2))
-    #         file.write('            NDCG={}\n'.format(ndcg2))
-    #         file.write('            AUC={}\n'.format(auc2))
-
 with io.open(result_path + 'All_test_performance.txt', 'a', encoding='utf-8') as file:
     file.write('\n')
     file.write('\n')
