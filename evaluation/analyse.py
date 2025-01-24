@@ -12,7 +12,7 @@ def parse_all_args():
     parser.add_argument('--save_img', type=str, default=True)
     parser.add_argument('--analyse', type=str, default=True)
     parser.add_argument('--num_per_outfit', type=int, default=7)
-    parser.add_argument('--output_dir', type=str, default="../DiFashion/output/sample_ddim/sample_0_ifashion_7_200/eval-test-git")
+    parser.add_argument('--output_dir', type=str, default="../FashionDPO/output/sample_ddim/sample_5_ifashion_7_1000/eval-test-git")
     parser.add_argument('--weight_com', type=float, default=0.3333)
     parser.add_argument('--weight_per', type=float, default=0.3333)
     parser.add_argument('--weight_qua', type=float, default=0.3333)
