@@ -81,8 +81,8 @@ parser.add_argument('--img_folder_path', type=str, default='../datasets/ifashion
 parser.add_argument('--pretrained_evaluator_ckpt', type=str,
                     default='./compatibility_evaluator/ifashion-ckpt/fashion_evaluator.pth')
 parser.add_argument('--dataset', type=str, default="ifashion")
-parser.add_argument('--output_dir', type=str, default="../DiFashion/output/sample_ddim/sample_0_ifashion_7_200")
-parser.add_argument('--eval_version', type=str, default="sample_0_ifashion_7_200")
+parser.add_argument('--output_dir', type=str, default="../FashionDPO/output/sample_ddim/sample_5_ifashion_7_1000")
+parser.add_argument('--eval_version', type=str, default="sample_5_ifashion_7_1000")
 parser.add_argument('--ckpt', type=int, default=15000)
 parser.add_argument('--num_per_outfit', type=int, default=7)
 # parser.add_argument('--ckpts', type=str, default=None)
@@ -319,11 +319,11 @@ def main():
     if args.dataset == "ifashion":
         args.data_path = '../datasets/ifashion'
         args.pretrained_evaluator_ckpt = './compatibility_evaluator/ifashion-ckpt/ifashion_evaluator.pth'
-        args.output_dir = '../DiFashion/output/sample_ddim'
+        args.output_dir = '../FashionDPO/output/sample_ddim'
     elif args.dataset == "polyvore":
         args.data_path = '../datasets/polyvore'
         args.pretrained_evaluator_ckpt = './compatibility_evaluator/polyvore-ckpt/polyvore_evaluator.pth'
-        args.output_dir = '../DiFashion/output/sample_ddim'
+        args.output_dir = '../FashionDPO/output/sample_ddim'
     else:
         raise ValueError(f"Invalid dataset: {args.dataset}.")
 
@@ -396,7 +396,7 @@ def main():
 
     trans = transforms.ToTensor()
     resize = transforms.Resize(512, interpolation=transforms.InterpolationMode.BILINEAR)
-    _, _, img_trans = open_clip.create_model_and_transforms('ViT-H-14', pretrained='../DiFashion/models/huggingface/open_clip/open_clip_pytorch_model.bin')
+    _, _, img_trans = open_clip.create_model_and_transforms('ViT-H-14', pretrained='../FashionDPO/models/huggingface/open_clip/open_clip_pytorch_model.bin')
 
 
     print("Evaluating Start!")
@@ -439,10 +439,10 @@ def main():
                 for img_path in gen_data[uid][oid]["image_paths"]:
                     if isinstance(img_path, list):
                         gen_img_path = img_path[0]
-                        gen_img_path = os.path.join(f"../DiFashion/", gen_img_path)
+                        gen_img_path = os.path.join(f"../FashionDPO/", gen_img_path)
                     else:
-                        gen_img_path = os.path.join(f"../DiFashion/", img_path)
-                    # gen_img_path = os.path.join(f"../DiFashion/", gen_img_path)
+                        gen_img_path = os.path.join(f"../FashionDPO/", img_path)
+                    # gen_img_path = os.path.join(f"../FashionDPO/", gen_img_path)
                     im = Image.open(gen_img_path)
                     im_tensor = process(im)
                     im_tensor = im_tensor.to(device)
@@ -548,9 +548,9 @@ def main():
 
                     if isinstance(img_path, list):
                         gen_img_path = img_path[0]
-                        gen_img_path = os.path.join(f"../DiFashion/", gen_img_path)
+                        gen_img_path = os.path.join(f"../FashionDPO/", gen_img_path)
                     else:
-                        gen_img_path = os.path.join(f"../DiFashion/", img_path)
+                        gen_img_path = os.path.join(f"../FashionDPO/", img_path)
                     im = Image.open(gen_img_path)
                     gen4personal_sim["gen"].append(img_trans(im))
 
@@ -586,11 +586,11 @@ def main():
     # -------------------------------------------------------------- #
     #                get each image's MiniCPM score                  #
     # -------------------------------------------------------------- #
-    model_minicpm = AutoModel.from_pretrained("../DiFashion/models/huggingface/openbmbMiniCPM-Llama3-V-2_5",
+    model_minicpm = AutoModel.from_pretrained("../FashionDPO/models/huggingface/openbmbMiniCPM-Llama3-V-2_5",
                                       trust_remote_code=True, torch_dtype=torch.float16)
     model_minicpm = model_minicpm.to(device)
 
-    tokenizer = AutoTokenizer.from_pretrained("../DiFashion/models/huggingface/openbmbMiniCPM-Llama3-V-2_5",
+    tokenizer = AutoTokenizer.from_pretrained("../FashionDPO/models/huggingface/openbmbMiniCPM-Llama3-V-2_5",
                                               trust_remote_code=True)
     model_minicpm.eval()
 
@@ -657,17 +657,17 @@ def main():
 
 
             # for outfit_path in gen_data[uid][oid]["outfit_paths"]:
-            #     outfit_path = os.path.join(f"../DiFashion/", outfit_path)
+            #     outfit_path = os.path.join(f"../FashionDPO/", outfit_path)
             #     outfit = Image.open(outfit_path).convert('RGB')
             #     minicpm_com["image"].append(np.array(outfit))
             #     minicpm_com["prompt"].append(prompt_com)
             for img_path in gen_data[uid][oid]["image_paths"]:
                 if isinstance(img_path, list):
                     gen_img_path = img_path[0]
-                    gen_img_path = os.path.join(f"../DiFashion/", gen_img_path)
+                    gen_img_path = os.path.join(f"../FashionDPO/", gen_img_path)
                 else:
-                    gen_img_path = os.path.join(f"../DiFashion/", img_path)
-                gen_img_path = os.path.join(f"../DiFashion/", gen_img_path)
+                    gen_img_path = os.path.join(f"../FashionDPO/", img_path)
+                gen_img_path = os.path.join(f"../FashionDPO/", gen_img_path)
                 im = Image.open(gen_img_path).convert('RGB')
                 minicpm_qua["image"].append(np.array(im))
                 minicpm_qua["prompt"].append(prompt_qua)
@@ -802,9 +802,9 @@ def main():
     #
     #             if isinstance(img_path, list):
     #                 gen_img_path = img_path[0]
-    #                 gen_img_path = os.path.join(f"../DiFashion/", gen_img_path)
+    #                 gen_img_path = os.path.join(f"../FashionDPO/", gen_img_path)
     #             else:
-    #                 gen_img_path = os.path.join(f"../DiFashion/", img_path)
+    #                 gen_img_path = os.path.join(f"../FashionDPO/", img_path)
     #             im = Image.open(gen_img_path)
     #             # gen4personal_sim["hist"].append(history[uid][cate])
     #             # gen4personal_sim["gen"].append(img_trans(im))
