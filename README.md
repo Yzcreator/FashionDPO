@@ -5,7 +5,7 @@ This is the implementation of FashionDPO (Accepted by SIGIR'25).
 > [Mingzhe Yu, Yunshan Ma, Lei Wu, Changshuo Wang, Xue Li, Lei Meng]
 
 # Overview
-
+![The overview of FashionDPO](figure/model_result.png)
 
 # Generated Examples
 ![Results for this project](figure/model_result.png)
