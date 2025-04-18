@@ -1,7 +1,7 @@
 # FashionDPO
 This is the implementation of FashionDPO (Accepted by SIGIR'25).
 > [FashionDPO:Fine-tune Fashion Outfit Generation Model using Direct Preference Optimization](https://arxiv.org/abs/2504.12900)
-
+>
 > [Mingzhe Yu, Yunshan Ma, Lei Wu, Changshuo Wang, Xue Li, Lei Meng]
 
 # Overview
