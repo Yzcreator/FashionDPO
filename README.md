@@ -83,6 +83,6 @@ python finetune.py
 
 ### Release checkpoint
 
-The checkpoints are released via [the anonymous huggingface repo](https://huggingface.co/AZhe1220/fashiondpo/tree/main). `checkpoint_ifashion` is fine-tuned on the iFashion dataset, while `checkpoint_polyvore` is fine-tuned on the Polyvore dataset.
+The checkpoints are released via [the huggingface repo](https://huggingface.co/AZhe1220/fashiondpo/tree/main). `checkpoint_ifashion` is fine-tuned on the iFashion dataset, while `checkpoint_polyvore` is fine-tuned on the Polyvore dataset.
 
 
