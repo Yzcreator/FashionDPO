@@ -54,8 +54,8 @@ def parse_all_args():
     parser.add_argument(
         "--pretrained_model_name_or_path",
         type=str,
-        # default="stabilityai/stable-diffusion-2-base",
-        default="checkpoints/sample-ddim-7-0",
+        default="stabilityai/stable-diffusion-2-base",
+        # default="checkpoints/checkpoint_ifashion",
         required=False,
         help="Path to pretrained model or model identifier from huggingface.co/models.",
     )
