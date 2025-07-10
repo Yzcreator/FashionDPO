@@ -77,31 +77,6 @@ center_crop = False
 random_flip = False
 
 
-# --Create dataset----------------------------------------------------------------------------------
-class FoodData(torch.utils.data.Dataset):
-    def __init__(self):
-        # load user-item interactions
-        self.data_train = np.load(root_path + 'data_train.npy')[:, :2].astype(np.long)  # (676946, 2)
-
-        # load label data
-        self.labels = np.load(root_path + 'interaction_indicator_train.npy').astype(np.long)  # (68768, 45630)
-
-    def __getitem__(self, index):
-        # get data
-        # load data matrix
-        data = self.data_train[index]
-
-        # get label, i.e. indicators of interacted items for the user in data
-        label = self.labels[data[0]]
-
-        return data, label
-
-    def __len__(self):
-        return len(self.data_train)
-
-
-
-
 # the recommender model
 class myModel(nn.Module):
     def __init__(self,
